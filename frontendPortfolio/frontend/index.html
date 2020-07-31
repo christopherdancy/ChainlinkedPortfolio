@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <!-- Web3 and javascript files-->
+    <script src="web3.js\dist\web3.min.js" ></script>
+    <script src="bundle3.js" ></script>
+
+  <!-- Styling files -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+  <meta charset="utf-8">
+  <title>Smart Piggy Bank</title>
+</head>
+
+  <body>
+    <div class="container">
+      <h1 class= "text-center text-default p-4"> Smart Piggy Bank</h1>
+      <br>
+      <br>
+    <!-- CREATE GOAL FORM (START) -->
+     <form id= "createGoalForm"  >
+        <h3 class="text-center text-primary" >Create A Goal</h3>
+        <div class="form-group row mx-auto " style="width:560px;">
+          <label for="addressinput" class="col-sm-2 col-form-label">Address</label>
+          <div class="col-sm-10">
+            <input  id= "addressinput"  class="form-control"  type="text" placeholder="Where will you be spending this money?">
+          </div>
+          <br>
+          <br>
+          <label  for ="amountinput" class="col-sm-2 col-form-label">Amount</label>
+          <div class="col-sm-10">
+            <input id="amountinput" type="number" class="form-control"  placeholder="How much are you saving up?">
+          </div>
+          <br>
+          <br>
+          <button id="goalbutton" type = "submit" class = "btn btn-outline-primary btn-block" >Create Goal</button>
+        </div>
+      </form>
+      <p id= "createTxStatus"></p>
+    <!-- CREATE GOAL FORM (END) -->
+      <br>
+      <br>
+
+    <!-- TABLES (START) -->
+      <div class="row" >
+        <!-- COMPLETED GOALS TABLE (START) -->
+            <div class="col-xs-6 pl-1 pr-2 mx-auto" style="width:340px; height:340px">
+              <h4 class= "text-center text-default">Completed Goals</h4>
+              <div class="table-responsive">
+                <table id = "completedGoalTable" {margin:auto; with: 50% !important;} class="table table-bordered bg-default table-hover table-sm text-center">
+                    <tbody>
+                      <thead class= "thead-light">
+                        <th >ID</th>
+                        <th >Balance</th>
+                      </thead>
+                      <tr>
+                        <td>213422</td>
+                        <td >10</td>
+                      </tr>
+                      <tr>
+                        <td >57992</td>
+                        <td >3</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                <!-- COMPLETED GOALS FORM (START) -->
+                    <h5>Spend Completed Goal!</h5>
+                    <form id="spendgoal">
+                      <div class="input-group mb-3">
+                        <input type="number" placeholder="Goal ID..." name="search" class="form-control">
+                        <div class="input-group-append">
+                          <button type="submit" class= "btn btn-success" >Spend</button>
+                        </div>
+                      </div>
+                    </form>
+                <!-- COMPLETED GOALS FORM (END) -->
+              </div>
+            </div>
+        <!-- COMPLETED GOALS TABLE (END) -->
+
+        <!-- CREATED GOALS TABLE (START) -->
+              <div class="col-xs-6 pl-1 pr-1 mx-auto " style="width:340px; height: 25PX">
+              <h4 class= "text-center text-default">Goals To Accomplish</h4>
+              <div class="table-responsive">
+              <table id= "goalTable" {margin:auto; with: 50% !important;} class="table table-bordered bg-default table-hover table-sm text-center">
+                <tbody>
+                  <thead class= "thead-light">
+                    <th>ID</th>
+                    <th>ToGo</th>
+                  </thead>
+                  <tr>
+                    <td>213422</td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>57992</td>
+                    <td>10</td>
+                  </tr>
+                </tbody>
+              </table>
+            <!-- ADD TO GOALS FORM (START) -->
+                <h5>Add To Goal!</h5>
+                <form id="addGoal">
+                  <div class="input-group mb-3">
+                    <input type="number" placeholder="Goal ID..." name="search" class="form-control">
+                    <div class="input-group-append">
+                      <button type="submit" class= "btn btn-primary" >Add</button>
+                    </div>
+                  </div>
+                </form>
+            <!-- ADD TO GOALS FORM (END) -->
+
+              </div>
+              </div>
+      <!-- CREATED GOALS (END) -->
+
+
+      <!-- CONTRIBUTED GOALS TABLE (START) -->
+          <div class="col-xs-6 pl-1 pr-1 mx-auto" style="width:340px; height:340px">
+            <h4 class= "text-center text-default">Contributions</h4>
+            <div class="table-responsive">
+            <table id = "contributeTableTable" {margin:auto; with: 50% !important;} class="table table-bordered bg-default table-hover table-sm text-center">
+              <tbody>
+                <thead class= "thead-light">
+                  <th>ID</th>
+                  <th>Owner</th>
+                  <th>Invested</th>
+                </thead>
+                <tr>
+                  <td>213422</td>
+                  <td>0x90000</td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td>57992</td>
+                  <td>0x29999</td>
+                  <td>10</td>
+                </tr>
+              </tbody>
+            </table>
+            <!-- CONTRIBUTED GOALS FORM (START) -->
+              <h5>Contribute To A Friend!</h5>
+              <form id="friendTable">
+                <div class="input-group mb-3">
+                  <input type="number" placeholder="Goal ID..." name="search" class="form-control">
+                  <div class="input-group-append">
+                    <button type="submit" class= "btn btn-danger" >Contribute</button>
+                  </div>
+                </div>
+              </form>
+            <!-- CONTRIBUTED GOALS FORM (END) -->
+          </div>
+        </div>
+      <!-- CONTRIBUTED GOALS TABLE (END) -->
+
+
+      </div>
+    </div>
+  <!-- TABLES (END) -->
+  </body>
+</html>
